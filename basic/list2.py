@@ -13,8 +13,13 @@
 # so [1, 2, 2, 3] returns [1, 2, 3]. You may create a new list or
 # modify the passed in list.
 def remove_adjacent(nums):
-  # +++your code here+++
-  return
+    result_list=[]          #criei uma lista
+    for num in nums:        #para cada nº na lista
+        if len(result_list)==0 or num!=result_list[-1]:#se a qt de nºs da lista for igual a 0 ou se o nº for diferente do ultimo nºda lista
+            result_list.append(num)      #se o que ta em cima for verdade ent adiciona a lista
+    return result_list # depois de percorrer todos os números, devolve a lista final
+  
+  
 
 
 # E. Given two lists sorted in increasing order, create and return a merged
@@ -22,8 +27,36 @@ def remove_adjacent(nums):
 # Ideally, the solution should work in "linear" time, making a single
 # pass of both lists.
 def linear_merge(list1, list2):
-  # +++your code here+++
-  return
+    result = []                          # cria a lista de resultado, vazia
+    i = 0                                # índice da posição atual em list1
+    j = 0                                # índice da posição atual em list2
+    while i < len(list1) and j < len(list2):   # enquanto nenhuma das listas tiver acabado
+        if list1[i] <= list2[j]:         # se o elemento atual de list1 é menor ou igual ao de list2
+            result.append(list1[i])      # guarda o de list1 no resultado
+            i = i + 1                    # avança para o próximo elemento de list1
+        else:                            # caso contrário, o de list2 é o menor
+            result.append(list2[j])      # guarda o de list2 no resultado
+            j = j + 1                    # avança para o próximo elemento de list2
+    result = result + list1[i:]          # junta o que sobrou de list1 (vazio se já acabou)
+    result = result + list2[j:]          # junta o que sobrou de list2 (vazio se já acabou)
+    return result                        # devolve a lista final já ordenada
+                                   
+
+                                     #ou
+                                
+def linear_merge(list1, list2):
+    result = []                              # lista de resultado, vazia (vai ficar ao contrário)
+    while len(list1) > 0 and len(list2) > 0: # enquanto as duas listas tiverem elementos
+        if list1[-1] >= list2[-1]:           # se o último (maior) de list1 é maior ou igual ao de list2
+            result.append(list1.pop())       # tira-o de list1 e guarda no resultado
+        else:                                # caso contrário, o maior é o de list2
+            result.append(list2.pop())       # tira-o de list2 e guarda no resultado
+    while len(list1) > 0:                    # se sobrou algo em list1
+        result.append(list1.pop())           # tira o último e guarda
+    while len(list2) > 0:                    # se sobrou algo em list2
+        result.append(list2.pop())           # tira o último e guarda
+    result.reverse()                         # inverte o resultado para ficar por ordem crescente
+    return result                            # devolve a lista final                                
 
 # Note: the solution above is kind of cute, but unforunately list.pop(0)
 # is not constant time with the standard python list implementation, so

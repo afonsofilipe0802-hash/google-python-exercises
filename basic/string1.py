@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -24,10 +23,10 @@
 # So donuts(5) returns 'Number of donuts: 5'
 # and donuts(23) returns 'Number of donuts: many'
 def donuts(count):
-    if count>=10:
-        return "Number of donuts: many"
-    else:
-        return "Number of donuts: "+str(count)
+    if count>=10:                             #se a contagem de donuts for superior ou igual a 10
+        return "Number of donuts: many"       #retorna a frase....
+    else:                                     #caso contrário
+        return "Number of donuts: "+str(count)#retorna a frase e com o numero em str...
 
 donuts(20)
 donuts(5)
@@ -38,10 +37,10 @@ donuts(5)
 # so 'spring' yields 'spng'. However, if the string length
 # is less than 2, return instead the empty string.
 def both_ends(s):
-    if len(s)<2:
-        return ""
-    else:
-        return s[:2]+s[-2:]
+    if len(s)<2:            #se o comprimento da palavra for menos que 2
+        return ""           #retorna vazio
+    else:                   #caso contrário
+        return s[:2]+s[-2:] #junta as primeiras 2 letras com as 2 ultimas
   
   
 
@@ -56,9 +55,9 @@ def both_ends(s):
 # Hint: s.replace(stra, strb) returns a version of string s
 # where all instances of stra have been replaced by strb.
 def fix_start(s):
-    primeira_letra=s[0]
-    o_resto_da_palavra=s[1:].replace(primeira_letra,"*")
-    return primeira_letra + o_resto_da_palavra
+    primeira_letra=s[0]                                 #criei uma variável que contem a primeira letra da palavra
+    o_resto_da_palavra=s[1:].replace(primeira_letra,"*")#criei uma variável em que trocasse, a partir da primeira letra pra frente, uma letra igual a 1ª com *
+    return primeira_letra + o_resto_da_palavra          #retorna a palavra
 
 
 # D. MixUp
@@ -69,14 +68,13 @@ def fix_start(s):
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
-    primeiras_duas_letras_a=a[:2]
-    primeiras_duas_letras_b=b[:2]
-    resto_de_a=a[2:]
-    resto_de_b=b[2:]
-    a_final= primeiras_duas_letras_b+resto_de_a
-    b_final= primeiras_duas_letras_a+resto_de_b
-    return a_final+" "+b_final
-  
+    primeiras_duas_letras_a=a[:2]               #criei uma variável que contem as primeiras 2 letras de a
+    primeiras_duas_letras_b=b[:2]               #criei uma variável que contem as primeiras 2 letras de b
+    resto_de_a=a[2:]                            #criei uma variável que contem o resto das letras a partir do indice 2 de a
+    resto_de_b=b[2:]                            #criei uma variável que contem o resto das letras a partir do indice 2 de b
+    a_final= primeiras_duas_letras_b+resto_de_a #criei uma variável que juntou primeiras duas letras b e o resto de a
+    b_final= primeiras_duas_letras_a+resto_de_b #criei uma variável que juntou primeiras duas letras a e o resto de b
+    return a_final+" "+b_final                  #retorna a palavra com as variáveis e com espaço entre elas
   
 
 

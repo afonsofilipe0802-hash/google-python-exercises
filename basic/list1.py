@@ -21,11 +21,11 @@
 # and last chars of the string are the same.
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
-    count=0
-    for string in words:
-        if len(string)>=2 and string[0]==string[-1:]:
-            count=count+1
-    return count
+    count=0                                          #criei uma variável de contagem a dizer que começa com zero
+    for string in words:                             #fiz um loop, ou seja, para cada palavra na lista
+        if len(string)>=2 and string[0]==string[-1:]:#se o comprimento do string for maior ou igual a 2 e a 1ªletra=ultima letra
+            count=count+1                            #adiciona na contagem
+    return count                                     #retornar a contagem
 
 
 # B. front_x
@@ -36,14 +36,14 @@ def match_ends(words):
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-    x_list=[]
-    other_list=[]
-    for word in words:
-        if word.startswith("x"):
-            x_list.append(word)
-        else:
-            other_list.append(word)
-    return sorted(x_list)+sorted(other_list)
+    x_list=[]                               #criei uma lista onde vou por palavras que começam com x
+    other_list=[]                           #criei uma lista onde vou por palavras que ñ começam com x
+    for word in words:                      #criei um loop, para cada palavra na lista de palavras
+        if word.startswith("x"):            #se a palavra começa com x
+            x_list.append(word)             #adiciona à lista a palavra
+        else:                               #caso contrário
+            other_list.append(word)         #adiciona na outra lista a palavra
+    return sorted(x_list)+sorted(other_list)#retorna a lista com x ordenada junto com a outra lista
 
 
 
@@ -53,20 +53,20 @@ def front_x(words):
 # e.g. [(1, 7), (1, 3), (3, 4, 5), (2, 2)] yields
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
-def sort_last(tuples):
-    extract_key=[]
-    for pair in tuples:
-        extract_key.append((pair[-1],pair))
-    extract_key.sort()
-    result=[]
-    for key,pair in extract_key:
-        result.append(pair)
-    return result
-#ou
-def sort_last(tuples):
-    def extract_key(pair):
-        return pair[-1]
-    return sorted(tuples,key=extract_key)
+def sort_last(tuples):                     
+    extract_key=[]                         #criei uma lista
+    for pair in tuples:                    #criei um loop, para cada par nos tumples
+        extract_key.append((pair[-1],pair))#adiciona na lista o ultimo nº e o seu par
+    extract_key.sort()                     #ordei numericamente a lista
+    result=[]                              #criei outra lista a lista final
+    for key,pair in extract_key:           #fiz outro loop, para cada chave e par na lista que criei e que ja ordenei numéricamente
+        result.append(pair)                #adiciona os pares a lista final
+    return result                          #retorna a lista final
+                            #ou
+def sort_last(tuples):                     
+    def extract_key(pair):                 #criei uma função dentro de outra, em que a função inicial vai usa-la por mim o input é o par dos tuples
+        return pair[-1]                    #esta função vai returnar o ultimo nº de cada par
+    return sorted(tuples,key=extract_key)  #retorna os tuples ordenados numéricamente usando a função criada. Ele ordena os tuples a partir do key=extract_key
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
